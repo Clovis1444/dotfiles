@@ -1,0 +1,10 @@
+{
+    "diagnostics.globals": [
+        "vim",
+        "saveAndFormatFile",
+        "toggleRelativeNumber"
+    ],
+    "diagnostics.disable": [
+        "undefined-field"
+    ]
+}
