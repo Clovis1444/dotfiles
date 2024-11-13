@@ -2,7 +2,8 @@
 
 This is my dotfiles. It uses [chezmoi](https://github.com/twpayne/chezmoi) to deploy dotfiles to other machines.
 
-For more info see: https://www.chezmoi.io/
+> [!TIP]
+> For more info see: https://www.chezmoi.io/
 
 # Deploy
 
