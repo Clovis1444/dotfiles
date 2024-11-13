@@ -4,7 +4,10 @@ path+=('/opt/nvim/')
 path+=('/home/clovis/Programs/bin')
 path+=('/home/clovis/bin')
 
-#QT lib path
+# Set default editor
+export EDITOR="nvim"
+
+# QT lib path
 export QT_PATH="/home/clovis/Qt/6.8.0/gcc_64"
 
 # If you come from bash you might have to change your $PATH.
