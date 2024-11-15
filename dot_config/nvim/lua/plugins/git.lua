@@ -5,6 +5,9 @@ return {
             require("gitsigns").setup()
             vim.keymap.set("n", "<leader>gp", ":Gitsigns preview_hunk<CR>", {})
             vim.keymap.set("n", "<leader>gt", ":Gitsigns toggle_current_line_blame<CR>", {})
+
+            vim.keymap.set("n", "<M-=>", ":Gitsigns nav_hunk next<CR>", {})
+            vim.keymap.set("n", "<M-->", ":Gitsigns nav_hunk prev<CR>", {})
         end,
     },
     -- Important: lazygit cli should be installed
