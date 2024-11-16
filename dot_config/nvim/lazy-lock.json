@@ -26,6 +26,7 @@
   "nvim-dap-ui": { "branch": "master", "commit": "ffa89839f97bad360e78428d5c740fdad9a0ff02" },
   "nvim-lspconfig": { "branch": "master", "commit": "d141895d1d9f41048fff201d62a2d6e96d299e32" },
   "nvim-nio": { "branch": "master", "commit": "a428f309119086dc78dd4b19306d2d67be884eee" },
+  "nvim-notify": { "branch": "master", "commit": "fbef5d32be8466dd76544a257d3f3dce20082a07" },
   "nvim-treesitter": { "branch": "master", "commit": "19079207ba4a8c7ed956f40a111a22b1a2dfa6e8" },
   "nvim-ufo": { "branch": "main", "commit": "522d719d421fc42b95577d9624048d8348d326ea" },
   "nvim-web-devicons": { "branch": "master", "commit": "19d257cf889f79f4022163c3fbb5e08639077bd8" },
@@ -35,5 +36,6 @@
   "telescope.nvim": { "branch": "master", "commit": "a0bbec21143c7bc5f8bb02e0005fa0b982edc026" },
   "trouble.nvim": { "branch": "main", "commit": "40c5317a6e90fe3393f07b0fee580d9e93a216b4" },
   "vim-wakatime": { "branch": "master", "commit": "f699e30ca1ba0c7f316847316fd0ba19d3ee51c1" },
-  "which-key.nvim": { "branch": "main", "commit": "8badb359f7ab8711e2575ef75dfe6fbbd87e4821" }
+  "which-key.nvim": { "branch": "main", "commit": "8badb359f7ab8711e2575ef75dfe6fbbd87e4821" },
+  "workspace-diagnostics.nvim": { "branch": "main", "commit": "573ff93c47898967efdfbc6587a1a39e3c2d365e" }
 }

@@ -77,8 +77,6 @@ return {
             vim.keymap.set("n", "K", vim.lsp.buf.hover, {})
             vim.keymap.set("n", "dg", vim.lsp.buf.definition, {})
             vim.keymap.set({ "n", "v" }, "<leader>ca", vim.lsp.buf.code_action, {})
-            vim.keymap.set("n", "<F2>", vim.lsp.buf.rename, {})
-
             vim.keymap.set("n", "<C-k>", vim.diagnostic.goto_prev, {})
             vim.keymap.set("n", "<C-j>", vim.diagnostic.goto_next, {})
             vim.keymap.set("n", "<leader>e", vim.diagnostic.open_float, {})
