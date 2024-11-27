@@ -19,7 +19,9 @@ return {
 
 		-- Mapping
 		vim.api.nvim_set_keymap("n", "<F4>", ":TSContextToggle<CR>", { noremap = true, silent = true })
-		vim.api.nvim_set_keymap("i", "<F4>", ":TSContextToggle<CR>", { noremap = true, silent = true })
+		vim.keymap.set("i", "<F4>", function()
+			vim.cmd("TSContextToggle")
+		end, { noremap = true, silent = true })
 		-- F28 == Ctrl + F4
 		vim.keymap.set("n", "<F28>", function()
 			require("treesitter-context").go_to_context(vim.v.count1)
