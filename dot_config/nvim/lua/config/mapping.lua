@@ -74,3 +74,15 @@ vim.api.nvim_set_keymap("n", "<F3>", ":lua toggleRelativeNumber()<CR>", { norema
 -- Center on cursor after scrolling
 vim.api.nvim_set_keymap("n", "<C-d>", "<C-d>zz", { noremap = true, silent = true })
 vim.api.nvim_set_keymap("n", "<C-u>", "<C-u>zz", { noremap = true, silent = true })
+
+-- Move line
+vim.api.nvim_set_keymap("n", "<M-k>", ":m -2<CR>", { noremap = true, silent = true })
+vim.api.nvim_set_keymap("n", "<M-Up>", ":m -2<CR>", { noremap = true, silent = true })
+vim.api.nvim_set_keymap("n", "<M-j>", ":m +1<CR>", { noremap = true, silent = true })
+vim.api.nvim_set_keymap("n", "<M-Down>", ":m +1<CR>", { noremap = true, silent = true })
+
+-- Move selection
+vim.api.nvim_set_keymap("x", "<M-k>", ":m '<-2<CR>gv=gv", { noremap = true, silent = true })
+vim.api.nvim_set_keymap("x", "<M-Up>", ":m '<-2<CR>gv=gv", { noremap = true, silent = true })
+vim.api.nvim_set_keymap("x", "<M-j>", ":m '>+1<CR>gv=gv", { noremap = true, silent = true })
+vim.api.nvim_set_keymap("x", "<M-Down>", ":m '>+1<CR>gv=gv", { noremap = true, silent = true })
