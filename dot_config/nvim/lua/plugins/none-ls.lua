@@ -7,6 +7,7 @@ return {
 		local null_ls = require("null-ls")
 
 		null_ls.setup({
+			-- IMPORTANT: all of the following source should be installed manually through :Mason
 			sources = {
 				null_ls.builtins.formatting.stylua,
 				-- Note: Also glsl shaders support
@@ -14,6 +15,8 @@ return {
 					filetypes = { "c", "cpp", "glsl", "vert", "frag", "tesc", "tese", "geom", "comp" },
 				}),
 				null_ls.builtins.formatting.prettier,
+				-- python formatter
+				null_ls.builtins.formatting.black,
 				-- null_ls.builtins.diagnostics.eslint,
 			},
 		})

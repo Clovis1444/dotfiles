@@ -22,6 +22,7 @@ return {
 					"yamlls",
 					"bashls",
 					"html",
+					"pyright",
 				},
 			})
 		end,
@@ -72,6 +73,7 @@ return {
 			lspconfig.yamlls.setup(def_setup)
 			lspconfig.bashls.setup(def_setup)
 			lspconfig.html.setup(def_setup)
+			lspconfig.pyright.setup(def_setup)
 
 			-- GLOBAL KEYMAPS
 			vim.keymap.set("n", "K", vim.lsp.buf.hover, {})
