@@ -1,9 +1,9 @@
 # My PATHS
-path+=('~/Programs/LLVM/bin')
+path+=('/home/clovis/Programs/LLVM/bin')
 path+=('/opt/nvim/')
-path+=('~/Programs/bin')
-path+=('~/bin')
-path+=('~/programs/nvim-linux64/bin')
+path+=('/home/clovis/Programs/bin')
+path+=('/home/clovis/bin')
+path+=('/home/clovis/programs/nvim-linux64/bin')
 
 # Set default editor
 export EDITOR="/opt/nvim/nvim"
