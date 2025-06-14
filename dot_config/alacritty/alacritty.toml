@@ -4,13 +4,24 @@ TERM = "xterm-256color"
 [window]
 padding.x = 0
 padding.y = 0
+dynamic_padding = true
 
 startup_mode = "Maximized"
-
-decorations = "Buttonless"
+decorations = "Full"
 opacity = 1.0
 blur = true
 
+[colors]
+# Background color from "Adapta-Nokto" theme
+primary.background = "#222d32"
+
 [font]
-normal.family = "JetBrainsMono Nerd Font"
 size = 14.0
+
+normal.family = "JetBrainsMono Nerd Font"
+
+[keyboard]
+bindings = [
+# Open new windows at the same dir
+{ key = "Enter", mods = "Control|Command", action = "CreateNewWindow" },
+]
