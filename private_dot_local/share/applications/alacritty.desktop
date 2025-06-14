@@ -1,0 +1,7 @@
+[Desktop Entry]
+Type=Application
+Categories=TerminalEmulator;
+Icon=Alacritty
+Name=Alacritty
+GenericName=Terminal
+TryExec=alacritty
