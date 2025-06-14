@@ -1,0 +1,10 @@
+[Nemo Action]
+Active=true
+Name=Open in Alacritty
+Comment=Open Alacritty in the selected folder
+Icon-Name=Alacritty
+Exec=alacritty --working-directory %F
+Selection=none
+Extensions=any
+Quote=double
+Dependencies=alacritty;

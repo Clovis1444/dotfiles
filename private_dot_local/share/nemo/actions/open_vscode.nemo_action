@@ -1,0 +1,10 @@
+[Nemo Action]
+Active=true
+Name=Open in VSCode
+Comment=Open in VSCode
+Icon-Name=vscode
+Exec=code %F --profile LMDE
+Selection=Single
+Extensions=any;
+Quote=double
+Dependencies=code;
