@@ -23,5 +23,5 @@ normal.family = "JetBrainsMono Nerd Font"
 [keyboard]
 bindings = [
 # Open new windows at the same dir
-{ key = "Enter", mods = "Control|Command", action = "CreateNewWindow" },
+{ key = "Enter", mods = "Command|Shift", action = "CreateNewWindow" },
 ]
