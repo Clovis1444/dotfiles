@@ -24,4 +24,11 @@ normal.family = "JetBrainsMono Nerd Font"
 bindings = [
 # Open new windows at the same dir
 { key = "Enter", mods = "Command|Shift", action = "CreateNewWindow" },
+# Scroll keybindings
+{ key = "PageUp", mods = "None", action = "ScrollLineUp" },
+{ key = "PageDown", mods = "None", action = "ScrollLineDown" },
+{ key = "PageUp", mods = "Shift", action = "ScrollHalfPageUp" },
+{ key = "PageDown", mods = "Shift", action = "ScrollHalfPageDown" },
+{ key = "PageUp", mods = "Control|Shift", action = "ScrollPageUp" },
+{ key = "PageDown", mods = "Control|Shift", action = "ScrollPageDown" },
 ]
