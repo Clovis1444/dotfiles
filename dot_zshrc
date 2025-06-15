@@ -124,4 +124,4 @@ source $ZSH/oh-my-zsh.sh
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
 # Better cat
-alias cat=batcat
+alias cat="batcat --paging=never"
