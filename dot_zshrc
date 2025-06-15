@@ -86,7 +86,7 @@ ZSH_THEME="robbyrussell"
 plugins=(
     git
     zsh-syntax-highlighting
-    zsh-autosuggestions
+    # zsh-autosuggestions
 )
 
 # Disable this plugin due to long loading time
@@ -122,3 +122,6 @@ source $ZSH/oh-my-zsh.sh
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
+
+# Better cat
+alias cat=batcat
