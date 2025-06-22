@@ -1,3 +1,7 @@
+general.import = [
+    "~/.config/alacritty/themes/catppuccin-mocha.toml"
+]
+
 [env]
 TERM = "xterm-256color"
 
@@ -10,10 +14,6 @@ startup_mode = "Maximized"
 decorations = "Full"
 opacity = 1.0
 blur = true
-
-[colors]
-# Background color from "Adapta-Nokto" theme
-primary.background = "#222d32"
 
 [font]
 size = 14.0
