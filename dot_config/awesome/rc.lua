@@ -67,6 +67,8 @@ awful.spawn.with_shell("setxkbmap -layout us,ru -variant , -option grp:alt_shift
 -- TODO: change theme to catppuccin?
 beautiful.init(gears.filesystem.get_themes_dir() .. "default/theme.lua")
 
+beautiful.wallpaper = gears.filesystem.get_themes_dir() .. "images/sele_ring.jpg"
+
 wibox_size = 32
 awesome.set_preferred_icon_size(wibox_size)
 
