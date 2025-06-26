@@ -46,6 +46,7 @@ return {
                     layout_config = {
                         vertical = {
                             prompt_position = "bottom",
+                            preview_cutoff = 1,
                             -- Change the height of Telescope's preview window
                             preview_height = 0.6,
                         },
