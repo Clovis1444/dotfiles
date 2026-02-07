@@ -21,7 +21,7 @@ This repo uses [Stow](https://www.gnu.org/software/stow/) for managing dotfiles.
 
 Do all dotfiles changes inside `~/dotfiles/`.
 
-To add new config to repo do:
+To add new config to the repo do:
 ```bash
 mv ~/.config/nvim ~/dotfiles/.config/nvim
 stow ~/dotfiles

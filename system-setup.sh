@@ -8,7 +8,7 @@ sudo pacman -Syu
 sudo pacman -S fastfetch
 
 # Install initial packages
-sudo pacman -S git firefox nvim alacritty thunar wl-clipboard stow tldr
+sudo pacman -S git firefox nvim alacritty thunar wl-clipboard stow tldr ttf-ubuntu-font-family
 
 # Install zapret
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/Snowy-Fluffy/zapret.installer/refs/heads/main/installer.sh)"
