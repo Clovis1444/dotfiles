@@ -1,0 +1,11 @@
+^\.git$
+^\.gitignore$
+^\.gitmodules$
+^\.github$
+
+.*\.in
+.*\.bak
+.*\.sh
+
+.*\.md
+.*\.org
