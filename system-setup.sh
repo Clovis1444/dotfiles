@@ -43,3 +43,18 @@ sudo pacman -S telegram-desktop discord
 
 # Install lazygit, delta, bat, eza
 sudo pacman -S lazygit git-delta bat eza
+
+# You probable need to install some MS fonts.
+# See https://wiki.archlinux.org/title/Microsoft_fonts
+
+# You may want to enable multilib to install steam and other 32-bit apps.
+# See https://wiki.archlinux.org/title/Official_repositories#multilib
+
+# Packages to install
+packages=(
+    steam
+    grim
+    flameshot
+)
+
+pacman -S "${packages[@]}"
