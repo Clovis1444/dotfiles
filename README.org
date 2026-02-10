@@ -1,6 +1,6 @@
 * About
 
-This is my dotfiles for **Arch**-**Niri**-**DankMaterialShell** setup.
+This is my dotfiles for *Arch*-*Niri*-*DankMaterialShell* setup.
 
 * Install
 
@@ -19,9 +19,9 @@ For installing dependencies see [system-setup.sh](system-setup.sh).
 
 * Usage
 
-This repo uses [Stow](https://www.gnu.org/software/stow/) for managing dotfiles.
+This repo uses [[https://www.gnu.org/software/stow/][Stow]] for managing dotfiles.
 
-Do all dotfiles changes inside ~~/dotfiles/~.
+Do all dotfiles changes inside =~/dotfiles/=.
 
 To add new config to the repo do:
 #+begin_src bash
@@ -31,5 +31,5 @@ cd ~/dotfiles && stow .
 
 #+begin_quote
 [!TIP]
-To make changes into ~.gitconfig~ edit [~/dotfiles/.gitconfig.in](.gitconfig.in), then run [configure-gitconfig.sh](configure-gitconfig.sh).
+To make changes into ~.gitconfig~ edit [[.gitconfig.in][~/dotfiles/.gitconfig.in]], then run [[configure-gitconfig.sh][configure-gitconfig.sh]].
 #+end_quote
