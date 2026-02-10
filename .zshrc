@@ -14,7 +14,7 @@ source $ZSH/oh-my-zsh.sh
 # export LANG=en_US.UTF-8
 
 # [PATH]
-# path+=('/home/clovis/SomeDir')
+path+=('/home/clovis/.config/emacs/bin')
 
 # [ENV]
 export EDITOR='nvim'

@@ -53,8 +53,18 @@ sudo pacman -S lazygit git-delta bat eza
 # Packages to install
 packages=(
     steam
+    # Flameshot and its dependencies
     grim
     flameshot
+    # Development
+    emacs
+    ripgrep
+    fd
 )
 
 pacman -S "${packages[@]}"
+
+# Install doom emacs
+git clone --depth 1 https://github.com/doomemacs/doomemacs ~/.config/emacs
+~/.config/emacs/bin/doom install
+# Use `M-x -> nerd-icons-install-fonts` after doom installation

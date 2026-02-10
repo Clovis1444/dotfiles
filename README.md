@@ -24,7 +24,7 @@ Do all dotfiles changes inside `~/dotfiles/`.
 To add new config to the repo do:
 ```bash
 mv ~/.config/nvim ~/dotfiles/.config/nvim
-stow ~/dotfiles
+cd ~/dotfiles && stow .
 ```
 
 > [!TIP]
