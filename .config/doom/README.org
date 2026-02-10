@@ -1,0 +1,7 @@
+* After fresh doom install
+
+To install nerd fonts for *modeline* execute: ~nerd-icons-install-fonts~.
+
+* Usefull stuff
+
+To install *tree-sitter* grammar execute: ~treesit-install-language-grammar~.

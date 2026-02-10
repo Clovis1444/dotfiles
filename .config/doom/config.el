@@ -33,7 +33,9 @@
 (setq doom-modeline-major-mode-icon t)
 ;; Whether display the buffer encoding.
 (setq doom-modeline-buffer-encoding t)
-
+;;
+;; [TREE-SITTER]
+;;
 ;; If you use `org' and don't want your org files in the default location below,
 ;; change `org-directory'. It must be set before org loads!
 (setq org-directory "~/org/")

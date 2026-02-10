@@ -57,10 +57,10 @@
        (evil +everywhere); come to the dark side, we have cookies
        file-templates    ; auto-snippets for empty files
        fold              ; (nigh) universal code folding
-       ;;(format +onsave)  ; automated prettiness
+       (format +lsp)  ; automated prettiness
        ;;god               ; run Emacs commands without modifier keys
        ;;lispy             ; vim for lisp, for people who don't like vim
-       ;;multiple-cursors  ; editing in many places at once
+       multiple-cursors  ; editing in many places at once
        ;;objed             ; text object editing for the innocent
        ;;parinfer          ; turn lisp into python, sort of
        ;;rotate-text       ; cycle region at point between text candidates
@@ -72,7 +72,7 @@
        dired             ; making dired pretty [functional]
        electric          ; smarter, keyword-based electric-indent
        ;;eww               ; the internet is gross
-       ;;ibuffer           ; interactive buffer management
+       ibuffer           ; interactive buffer management
        tramp             ; remote files at your arthritic fingertips
        undo              ; persistent, smarter undo for your inevitable mistakes
        vc                ; version-control and Emacs, sitting in a tree
@@ -81,7 +81,7 @@
        ;;eshell            ; the elisp shell that works everywhere
        ;;shell             ; simple shell REPL for Emacs
        ;;term              ; basic terminal emulator for Emacs
-       ;;vterm             ; the best terminal emulation in Emacs
+       vterm             ; the best terminal emulation in Emacs
 
        :checkers
        syntax              ; tasing you for every semicolon you forget
@@ -100,14 +100,14 @@
        (eval +overlay)     ; run code, run (also, repls)
        lookup              ; navigate your code and its documentation
        ;;llm               ; when I said you needed friends, I didn't mean...
-       ;;(lsp +eglot)      ; M-x vscode
+       (lsp)      ; M-x vscode
        magit             ; a git porcelain for Emacs
        ;;make              ; run make tasks from Emacs
        ;;pass              ; password manager for nerds
        ;;pdf               ; pdf enhancements
        ;;terraform         ; infrastructure as code
        ;;tmux              ; an API for interacting with tmux
-       ;;tree-sitter       ; syntax and parsing, sitting in a tree...
+       tree-sitter       ; syntax and parsing, sitting in a tree...
        ;;upload            ; map local to remote projects via ssh/ftp
 
        :os
@@ -157,7 +157,7 @@
        ;;nim               ; python + lisp at the speed of c
        ;;nix               ; I hereby declare "nix geht mehr!"
        ;;ocaml             ; an objective camel
-       org               ; organize your plain life in plain text
+       (org +pretty)               ; organize your plain life in plain text
        ;;php               ; perl's insecure younger brother
        ;;plantuml          ; diagrams for confusing people more
        ;;graphviz          ; diagrams for confusing yourself even more
@@ -169,7 +169,7 @@
        ;;rest              ; Emacs as a REST client
        ;;rst               ; ReST in peace
        ;;(ruby +rails)     ; 1.step {|i| p "Ruby is #{i.even? ? 'love' : 'life'}"}
-       ;;(rust +lsp)       ; Fe2O3.unwrap().unwrap().unwrap().unwrap()
+       (rust +lsp +tree-sitter)       ; Fe2O3.unwrap().unwrap().unwrap().unwrap()
        ;;scala             ; java, but good
        ;;(scheme +guile)   ; a fully conniving family of lisps
        sh                ; she sells {ba,z,fi}sh shells on the C xor
