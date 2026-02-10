@@ -1,6 +1,6 @@
 * About
 
-This is my dotfiles for *Arch*-*Niri*-*DankMaterialShell* setup.
+This is my dotfiles for *Arch* - *Niri* - *DankMaterialShell* setup.
 
 * Install
 
@@ -14,7 +14,7 @@ stow .
 
 #+begin_quote
 [!IMPORTANT]
-For installing dependencies see [system-setup.sh](system-setup.sh).
+For installing dependencies see [[system-setup.sh][system-setup.sh]].
 #+end_quote
 
 * Usage
