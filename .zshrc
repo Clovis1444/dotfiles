@@ -18,6 +18,7 @@ path+=('/home/clovis/.config/emacs/bin')
 
 # [ENV]
 export EDITOR='nvim'
+export TERMINAL='alacritty'
 
 # [ALIAS]
 # Better cat

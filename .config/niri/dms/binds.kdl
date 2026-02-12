@@ -168,5 +168,4 @@ binds {
     Mod+Shift+Print     hotkey-overlay-title="Save screenshot screen" { spawn "flameshot" "screen";}
     // === System Controls ===
     Mod+Escape allow-inhibiting=false { toggle-keyboard-shortcuts-inhibit; }
-    Mod+Shift+P { power-off-monitors; }
 }

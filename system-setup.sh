@@ -53,6 +53,8 @@ sudo pacman -S lazygit git-delta bat eza
 # Packages to install
 packages=(
     steam
+    # Makes thunar inherit gtk theme
+    xfce4-settings
     # Flameshot and its dependencies
     grim
     flameshot
