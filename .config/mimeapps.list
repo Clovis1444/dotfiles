@@ -1,0 +1,7 @@
+[Default Applications]
+text/plain=emacs.desktop
+image/png=firefox.desktop
+
+[Added Associations]
+text/plain=nvim.desktop;emacs.desktop;
+image/png=firefox.desktop;
