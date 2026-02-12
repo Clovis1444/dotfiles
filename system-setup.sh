@@ -63,8 +63,12 @@ packages=(
     ripgrep
     fd
 )
-
 pacman -S "${packages[@]}"
+
+aur_packages=(
+    ttf-symbola
+)
+paru -S "${aur_packages[@]}"
 
 # Install doom emacs
 git clone --depth 1 https://github.com/doomemacs/doomemacs ~/.config/emacs
