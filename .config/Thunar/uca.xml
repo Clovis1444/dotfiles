@@ -23,4 +23,16 @@
 	<patterns>*</patterns>
 	<text-files/>
 </action>
+<action>
+	<icon>emacs</icon>
+	<name>Open in Emacs</name>
+	<submenu></submenu>
+	<unique-id>1770926964703398-1</unique-id>
+	<command>emacs %F</command>
+	<description>Open in Emacs</description>
+	<range>*</range>
+	<patterns>*</patterns>
+	<directories/>
+	<text-files/>
+</action>
 </actions>
