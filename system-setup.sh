@@ -62,6 +62,13 @@ packages=(
     emacs
     ripgrep
     fd
+    # Dired deps
+    poppler
+    ffmpegthumbnailer
+    mediainfo
+    imagemagick
+    tar
+    unzip
 )
 pacman -S "${packages[@]}"
 
