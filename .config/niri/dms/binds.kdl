@@ -10,7 +10,7 @@ binds {
     Mod+P hotkey-overlay-title="Application Launcher" {
         spawn "dms" "ipc" "call" "spotlight" "toggle";
     }
-    Mod+Backslash hotkey-overlay-title="Open Emacs"   { spawn "emacs"; }
+    Mod+Backslash hotkey-overlay-title="Open Emacs"   { spawn "emacsclient" "-c" "-a" "emacs"; }
     Mod+V hotkey-overlay-title="Clipboard Manager" {
         spawn "dms" "ipc" "call" "clipboard" "toggle";
     }

@@ -212,6 +212,9 @@ recent-windows {
     }
 }
 
+// Autostart
+spawn-at-startup "emacs" "--daemon"
+
 // Include dms files
 include "dms/colors.kdl"
 include "dms/layout.kdl"
