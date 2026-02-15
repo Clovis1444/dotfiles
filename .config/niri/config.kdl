@@ -198,6 +198,12 @@ window-rule {
     match app-id="thunar"
     default-column-width { proportion 0.5; }
 }
+// Window rules for developing programs
+window-rule {
+    match app-id="csi"
+    draw-border-with-background true
+    open-floating true
+}
 debug {
     honor-xdg-activation-with-invalid-serial
 }
