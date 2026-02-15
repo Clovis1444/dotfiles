@@ -66,11 +66,10 @@ binds {
     }
 
     // === Window Management ===
-    Mod+Q repeat=false { close-window; }
-    Mod+F { maximize-column; }
-    Mod+Shift+F { fullscreen-window; }
-    Mod+Shift+T { toggle-window-floating; }
-    Mod+Shift+V { switch-focus-between-floating-and-tiling; }
+    Mod+Q repeat=false hotkey-overlay-title="Close Window"          { close-window; }
+    Mod+F hotkey-overlay-title="Toggle window floating"             { toggle-window-floating; }
+    Mod+Shift+F hotkey-overlay-title="Toggle window fullscreen"     { fullscreen-window; }
+    Mod+Shift+V hotkey-overlay-title="Switch focus Tiling/Floating" { switch-focus-between-floating-and-tiling; }
 
     // === Focus Navigation ===
     Mod+Left  { focus-column-left; }
