@@ -4,4 +4,12 @@ To install nerd fonts for *modeline* execute: ~nerd-icons-install-fonts~.
 
 * Usefull stuff
 
+** Tree-sitter
 To install *tree-sitter* grammar execute: ~treesit-install-language-grammar~.
+
+** Fix initial emacsclient window size on Niri
+Add this to your =~/.config/emacs/early-init.el=:
+
+#+begin_src elisp
+(setopt frame-inhibit-implied-resize t)
+#+end_src
