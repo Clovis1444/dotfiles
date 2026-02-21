@@ -52,6 +52,8 @@ sudo pacman -S lazygit git-delta bat eza
 
 # Packages to install
 packages=(
+    jre-openjdk
+    flatpak
     steam
     libreoffice-fresh
     # Makes thunar inherit gtk theme

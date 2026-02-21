@@ -6,6 +6,8 @@ x-scheme-handler/http=firefox.desktop
 x-scheme-handler/https=firefox.desktop
 x-scheme-handler/about=firefox.desktop
 x-scheme-handler/unknown=firefox.desktop
+x-scheme-handler/discord-831593107883032657=discord-831593107883032657.desktop
+inode/directory=thunar.desktop
 
 [Added Associations]
 text/plain=nvim.desktop;emacs.desktop;
