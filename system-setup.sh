@@ -53,12 +53,13 @@ sudo pacman -S lazygit git-delta bat eza
 # Packages to install
 packages=(
     steam
+    libreoffice-fresh
     # Makes thunar inherit gtk theme
     xfce4-settings
     # Flameshot and its dependencies
     grim
     flameshot
-    # Development
+    # Emacs
     emacs
     ripgrep
     fd
@@ -74,6 +75,8 @@ pacman -S "${packages[@]}"
 
 aur_packages=(
     ttf-symbola
+    # Printer driver
+    brother-hll2300d
 )
 paru -S "${aur_packages[@]}"
 
