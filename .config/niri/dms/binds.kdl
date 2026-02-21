@@ -84,10 +84,10 @@ binds {
     Mod+Shift+L     { move-column-right; }
 
     // === Column Navigation ===
-    Mod+Home { focus-column-first; }
-    Mod+End  { focus-column-last; }
+    Mod+Home      { focus-column-first;   }
+    Mod+End       { focus-column-last;    }
     Mod+Ctrl+Home { move-column-to-first; }
-    Mod+Ctrl+End  { move-column-to-last; }
+    Mod+Ctrl+End  { move-column-to-last;  }
 
     // === Workspace Navigation ===
     Mod+Down           { focus-workspace-down; }
