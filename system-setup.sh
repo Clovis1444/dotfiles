@@ -53,10 +53,13 @@ sudo pacman -S lazygit git-delta bat eza
 # Packages to install
 packages=(
     jre-openjdk
+    jre8-openjdk
     flatpak
     steam
     libreoffice-fresh
-    # Makes thunar inherit gtk theme
+    krita
+    inkscape
+    less
     xfce4-settings
     # Flameshot and its dependencies
     grim
