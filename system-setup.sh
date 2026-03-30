@@ -58,6 +58,7 @@ packages=(
     steam
     libreoffice-fresh
     krita
+    calligra
     inkscape
     less
     xfce4-settings
@@ -75,6 +76,9 @@ packages=(
     imagemagick
     tar
     unzip
+    # Dev packages
+    uv # Python project manager
+    snap-pac # Btrfs snapshots after system update
 )
 pacman -S "${packages[@]}"
 
@@ -82,6 +86,12 @@ aur_packages=(
     ttf-symbola
     # Printer driver
     brother-hll2300d
+    # Btrfs snapshots integration for Limine
+    # For setup instructions see: https://gitlab.com/Zesko/limine-snapper-sync#arch-linux
+    limine-mkinitcpio-hook
+    limine-snapper-sync
+    # Telegram proxy
+    tg-ws-proxy-bin
 )
 paru -S "${aur_packages[@]}"
 
