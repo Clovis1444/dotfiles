@@ -155,9 +155,9 @@ binds {
     Mod+Shift+Equal { set-window-height "+10%"; }
 
     // === Screenshots ===
-    XF86Launch1     hotkey-overlay-title="Take screenshot gui"    { spawn "flameshot" "gui";}
-    Print           hotkey-overlay-title="Take screenshot gui"    { spawn "flameshot" "gui";}
-    Mod+Print       hotkey-overlay-title="Save screenshot screen" { spawn "flameshot" "screen" "--clipboard";}
+    XF86Launch1     hotkey-overlay-title="Make screenshot"        { spawn "flameshot" "gui";}
+    Print           hotkey-overlay-title="Make screenshot"        { spawn "flameshot" "gui";}
+    Mod+Print       hotkey-overlay-title="Copy screenshot screen" { spawn "flameshot" "screen" "--clipboard";}
     Mod+Shift+Print hotkey-overlay-title="Save screenshot screen" { spawn "flameshot" "screen";}
     // === System Controls ===
     Mod+Escape allow-inhibiting=false { toggle-keyboard-shortcuts-inhibit; }

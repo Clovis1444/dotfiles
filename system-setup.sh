@@ -79,6 +79,7 @@ packages=(
     # Dev packages
     uv # Python project manager
     snap-pac # Btrfs snapshots after system update
+    syncthing
 )
 pacman -S "${packages[@]}"
 
