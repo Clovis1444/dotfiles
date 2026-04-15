@@ -71,3 +71,7 @@
 ;;
 ;; You can also try 'gd' (or 'C-c c d') to jump to their definition and see how
 ;; they are implemented.
+
+;; [FIX Emacsclient init window size on WAYLAND]
+;; Fix initial emacsclient window size on Niri
+(setopt frame-inhibit-implied-resize t)
