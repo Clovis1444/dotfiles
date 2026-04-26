@@ -80,6 +80,7 @@ packages=(
     uv # Python project manager
     snap-pac # Btrfs snapshots after system update
     syncthing
+    wgcf # generate wg private key
 )
 pacman -S "${packages[@]}"
 
@@ -93,6 +94,7 @@ aur_packages=(
     limine-snapper-sync
     # Telegram proxy
     tg-ws-proxy-bin
+    amneziavpn-bin
 )
 paru -S "${aur_packages[@]}"
 

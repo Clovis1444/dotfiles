@@ -199,6 +199,11 @@ window-rule {
     match app-id="thunar"
     default-column-width { proportion 0.5; }
 }
+// Open floating
+window-rule {
+    match app-id="AmneziaVPN"
+    open-floating true
+}
 // Window rules for developing programs
 window-rule {
     match app-id="csi"
