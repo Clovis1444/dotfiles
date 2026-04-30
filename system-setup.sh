@@ -11,7 +11,10 @@ sudo pacman -S fastfetch
 sudo pacman -S git firefox nvim alacritty thunar wl-clipboard stow tldr ttf-ubuntu-font-family
 
 # Install zapret
-sh -c "$(curl -fsSL https://raw.githubusercontent.com/Snowy-Fluffy/zapret.installer/refs/heads/main/installer.sh)"
+# Option 1:
+# sh -c "$(curl -fsSL https://raw.githubusercontent.com/Snowy-Fluffy/zapret.installer/refs/heads/main/installer.sh)"
+# Option2:
+# https://github.com/Sergeydigl3/zapret-discord-youtube-linux
 
 # Install paru AUR helper
 cd ~
@@ -24,8 +27,6 @@ makepkg -si
 cd ~
 rm -rf paru
 
-# Install DMS
-curl -fsSL https://install.danklinux.com | sh
 # Install DankGreeter
 paru -S greetd-dms-greeter-git
 dms greeter enable
@@ -52,6 +53,8 @@ sudo pacman -S lazygit git-delta bat eza
 
 # Packages to install
 packages=(
+    dms-shell      # Dank Material Shell
+    dms-shell-niri # Dank Material Shell
     jre-openjdk
     jre8-openjdk
     flatpak
@@ -62,38 +65,36 @@ packages=(
     inkscape
     less
     xfce4-settings
-    # Flameshot and its dependencies
-    grim
-    flameshot
-    # Emacs
-    emacs
-    ripgrep
-    fd
-    # Dired deps
-    poppler
-    ffmpegthumbnailer
-    mediainfo
-    imagemagick
-    tar
-    unzip
+    grim      # Flameshot and its dependencies
+    flameshot # Flameshot and its dependencies
+    emacs   # Emacs
+    ripgrep # Emacs
+    fd      # Emacs``
+    poppler           # Dired deps
+    ffmpegthumbnailer # Dired deps
+    mediainfo         # Dired deps
+    imagemagick       # Dired deps
+    tar               # Dired deps
+    unzip             # Dired deps
     # Dev packages
     uv # Python project manager
+    #
     snap-pac # Btrfs snapshots after system update
     syncthing
     wgcf # generate wg private key
+    zerotier-one # Virtual LAN
 )
 pacman -S "${packages[@]}"
 
 aur_packages=(
     ttf-symbola
-    # Printer driver
-    brother-hll2300d
+    brother-hll2300d # Printer driver
     # Btrfs snapshots integration for Limine
     # For setup instructions see: https://gitlab.com/Zesko/limine-snapper-sync#arch-linux
     limine-mkinitcpio-hook
     limine-snapper-sync
-    # Telegram proxy
-    tg-ws-proxy-bin
+    #
+    tg-ws-proxy-bin # Telegram proxy
     amneziavpn-bin
 )
 paru -S "${aur_packages[@]}"
