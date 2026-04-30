@@ -167,7 +167,7 @@ window-rule {
     match app-id=r#"^galculator$"#
     match app-id=r#"^blueman-manager$"#
     // match app-id=r#"^org\.gnome\.Nautilus$"#
-    match app-id=r#"^steam$"#
+    // match app-id=r#"^steam$"#
     match app-id=r#"^xdg-desktop-portal$"#
     match app-id="flameshot"
     open-floating true
@@ -197,7 +197,18 @@ window-rule {
     match app-id="discord"
     match app-id="Nautilus"
     match app-id="thunar"
+    match app-id="steam" title="Steam"
     default-column-width { proportion 0.5; }
+}
+// Steam rules
+window-rule {
+    match app-id="steam" title="Steam"
+    default-column-width { proportion 0.75; }
+}
+window-rule {
+    match app-id="steam"
+    exclude title="Steam"
+    default-column-width { proportion 0.25; }
 }
 // Open floating
 window-rule {
