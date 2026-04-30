@@ -4,11 +4,8 @@ cd ~
 # Update pacman
 sudo pacman -Syu
 
-# First thing first - install fastfetch
-sudo pacman -S fastfetch
-
-# Install initial packages
-sudo pacman -S git firefox nvim alacritty thunar wl-clipboard stow tldr ttf-ubuntu-font-family
+# Install git
+sudo pacman -S git
 
 # Install zapret
 # Option 1:
@@ -27,23 +24,9 @@ makepkg -si
 cd ~
 rm -rf paru
 
-# Install DankGreeter
-paru -S greetd-dms-greeter-git
-dms greeter enable
-dms greeter sync
-
-# Install JetBrains Mono Nerd font
-sudo pacman -S ttf-jetbrains-mono-nerd
-
 # Install shell
 sudo pacman -S zsh zsh-syntax-highlighting
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
-
-# Install Telegram, Discord
-sudo pacman -S telegram-desktop discord
-
-# Install lazygit, delta, bat, eza
-sudo pacman -S lazygit git-delta bat eza
 
 # You probable need to install some MS fonts.
 # See https://wiki.archlinux.org/title/Microsoft_fonts
@@ -53,8 +36,25 @@ sudo pacman -S lazygit git-delta bat eza
 
 # Packages to install
 packages=(
+    fastfetch              # initial packages
+    git                    # initial packages
+    firefox                # initial packages
+    nvim                   # initial packages
+    alacritty              # initial packages
+    thunar                 # initial packages
+    wl-clipboard           # initial packages
+    stow                   # initial packages
+    tldr                   # initial packages
+    ttf-ubuntu-font-family # initial packages
+    ttf-jetbrains-mono-nerd # Nerd font
     dms-shell      # Dank Material Shell
     dms-shell-niri # Dank Material Shell
+    lazygit   # Shell utils
+    git-delta # Shell utils
+    bat       # Shell utils
+    eza       # Shell utils
+    telegram-desktop # Messaging Apps
+    discord          # Messaging Apps
     jre-openjdk
     jre8-openjdk
     flatpak
@@ -87,6 +87,7 @@ packages=(
 pacman -S "${packages[@]}"
 
 aur_packages=(
+    greetd-dms-greeter-git # Greeter
     ttf-symbola
     brother-hll2300d # Printer driver
     # Btrfs snapshots integration for Limine
@@ -98,6 +99,10 @@ aur_packages=(
     amneziavpn-bin
 )
 paru -S "${aur_packages[@]}"
+
+# Enable DankGreeter
+dms greeter enable
+dms greeter sync
 
 # Install doom emacs
 git clone --depth 1 https://github.com/doomemacs/doomemacs ~/.config/emacs
