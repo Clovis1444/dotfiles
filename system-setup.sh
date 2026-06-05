@@ -78,6 +78,7 @@ packages=(
     unzip             # Dired deps
     # Dev packages
     uv # Python project manager
+    meson # Project builder for cpp
     #
     snap-pac # Btrfs snapshots after system update
     syncthing
