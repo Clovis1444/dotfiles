@@ -24,4 +24,4 @@ export TERMINAL='alacritty'
 # Better cat
 alias cat="bat --paging=never"
 # Better ls
-alias ls="eza"
+alias ls="eza -la --group-directories-first"
