@@ -63,6 +63,12 @@
 ;;   `require' or `use-package'.
 ;; - `map!' for binding new keys
 ;;
+;; [BINDINGS]
+(map! :after dired
+      :map dired-mode-map
+      :desc "Execute command in current Dired directory"
+      :nv "X" #'dired-smart-shell-command)
+;;
 ;; To get information about any of these functions/macros, move the cursor over
 ;; the highlighted symbol at press 'K' (non-evil users must press 'C-c c k').
 ;; This will open documentation for it, including demos of how they are used.
