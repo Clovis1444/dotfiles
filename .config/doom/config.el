@@ -17,9 +17,6 @@
 (setq doom-theme 'catppuccin)
 ;;
 ;; [GENERAL]
-(setq display-line-numbers-type 'relative)
-(drag-stuff-global-mode t)
-(drag-stuff-define-keys)
 ;;
 ;; [MODELINE]
 ;; Font size
@@ -68,6 +65,14 @@
       :map dired-mode-map
       :desc "Execute command in current Dired directory"
       :nv "X" #'dired-smart-shell-command)
+;;
+;; [EDITOR]
+(setq display-line-numbers-type 'relative)
+;; Enable text moving using Alt plugin
+(drag-stuff-global-mode t)
+(drag-stuff-define-keys)
+;; Enable guess indentation in all files
+(setq +whitespace-guess-in-projects t)
 ;;
 ;; To get information about any of these functions/macros, move the cursor over
 ;; the highlighted symbol at press 'K' (non-evil users must press 'C-c c k').
