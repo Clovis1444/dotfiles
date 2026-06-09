@@ -46,6 +46,7 @@ packages=(
     stow                   # initial packages
     tldr                   # initial packages
     ttf-ubuntu-font-family # initial packages
+    wtype                  # initial packages
     ttf-jetbrains-mono-nerd # Nerd font
     dms-shell      # Dank Material Shell
     dms-shell-niri # Dank Material Shell
