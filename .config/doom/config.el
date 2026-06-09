@@ -61,10 +61,13 @@
 ;; - `map!' for binding new keys
 ;;
 ;; [BINDINGS]
-(map! :after dired
+(map! :desc "Execute command in current Dired directory"
+      :after dired
       :map dired-mode-map
-      :desc "Execute command in current Dired directory"
       :nv "X" #'dired-smart-shell-command)
+(map! :desc "Yank selected error"
+      :leader
+      :n "c y" #'flycheck-copy-errors-as-kill)
 ;;
 ;; [EDITOR]
 (setq display-line-numbers-type 'relative)
