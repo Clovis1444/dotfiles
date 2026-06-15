@@ -66,6 +66,7 @@ packages=(
     inkscape
     less
     xfce4-settings
+    wf-recorder # Wayland screen recorder
     grim      # Flameshot and its dependencies
     flameshot # Flameshot and its dependencies
     emacs   # Emacs
