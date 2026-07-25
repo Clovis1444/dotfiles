@@ -25,7 +25,7 @@ cd ~
 rm -rf paru
 
 # Install shell
-sudo pacman -S zsh zsh-syntax-highlighting
+sudo pacman -S zsh
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 
 # You probable need to install some MS fonts.
@@ -102,10 +102,6 @@ aur_packages=(
     amneziavpn-bin
 )
 paru -S "${aur_packages[@]}"
-
-# Enable DankGreeter
-dms greeter enable
-dms greeter sync
 
 # Install doom emacs
 git clone --depth 1 https://github.com/doomemacs/doomemacs ~/.config/emacs

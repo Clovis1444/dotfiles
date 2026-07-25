@@ -5,6 +5,7 @@ ZSH_THEME="robbyrussell"
 
 plugins=(
     git
+    # See: https://github.com/zsh-users/zsh-syntax-highlighting/blob/master/INSTALL.md#oh-my-zsh
     zsh-syntax-highlighting
 )
 
