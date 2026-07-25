@@ -9,6 +9,8 @@ cd $HOME
 git clone https://github.com/Clovis1444/dotfiles.git
 cd ./dotfiles
 ./configure-gitconfig.sh
+# If your are using msys2 version of stow - before calling stow do:
+# export MSYS=winsymlinks:nativestrict
 stow .
 #+end_src
 
