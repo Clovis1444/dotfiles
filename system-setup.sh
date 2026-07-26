@@ -71,13 +71,14 @@ packages=(
     flameshot # Flameshot and its dependencies
     emacs   # Emacs
     ripgrep # Emacs
-    fd      # Emacs``
+    fd      # Emacs
     poppler           # Dired deps
     ffmpegthumbnailer # Dired deps
     mediainfo         # Dired deps
     imagemagick       # Dired deps
     tar               # Dired deps
     unzip             # Dired deps
+    fzf # nvim
     # Dev packages
     uv # Python project manager
     meson # Project builder for cpp
