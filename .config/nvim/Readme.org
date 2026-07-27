@@ -1,7 +1,0 @@
-* Dependencies
-- nvim 0.12+
-- fzf
-- fd
-- ripgrep
-- bat
-- delta

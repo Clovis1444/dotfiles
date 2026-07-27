@@ -1,0 +1,9 @@
+* Dependencies
+  - [[https://github.com/alacritty/alacritty][Decent terminal emulator]]
+  - [[https://www.nerdfonts.com][Nerd Font]]
+  - [[https://github.com/neovim/neovim][Neovim v0.12+]]
+  - [[https://github.com/junegunn/fzf][fzf]]
+  - [[https://github.com/sharkdp/fd][fd]]
+  - [[https://github.com/BurntSushi/ripgrep][ripgrep]]
+  - [[https://github.com/sharkdp/bat][bat]]
+  - [[https://github.com/dandavison/delta][delta]]

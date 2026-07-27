@@ -46,6 +46,9 @@ vim.pack.add({
 
     -- Qol plugins
     "https://github.com/folke/todo-comments.nvim",
+
+    -- Langs
+    "https://github.com/nvim-orgmode/orgmode",
 })
 --
 
@@ -218,6 +221,10 @@ require("todo-comments").setup({
         -- NOTE: ripgrep regex
         pattern = [[\b(KEYWORDS)\s*(\([^)]*\))?\s*:]], -- default + "KEYWORD(author): ..."
     },
+})
+
+require('orgmode').setup({
+    org_startup_folded = "showeverything",
 })
 --
 
