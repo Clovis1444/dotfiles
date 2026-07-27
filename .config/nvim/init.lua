@@ -1,9 +1,11 @@
 -- [Plugins]
 -- TODO(clovis): add LSP support
+-- Dependency programs: fzf, fd, rg, bat, delta
 vim.pack.add({
     -- Dependency plugins
     "https://github.com/nvim-lua/plenary.nvim",
     "https://github.com/nvim-tree/nvim-web-devicons",
+    "https://github.com/rafamadriz/friendly-snippets",
 
     -- Theme
     "https://github.com/catppuccin/nvim",
@@ -12,16 +14,22 @@ vim.pack.add({
     "https://github.com/folke/which-key.nvim",
 
     -- Session manager
-    "https://github.com/folke/persistence.nvim",
+    "https://github.com/rmagatti/auto-session",
 
     -- File explorer
     "https://github.com/stevearc/oil.nvim",
-    -- File picker. Dep: (fzf)
+    -- File picker.
     "https://github.com/ibhagwan/fzf-lua",
     "https://github.com/ingur/fzf-oil.nvim",
 
     -- Buffer manager
     "https://github.com/j-morano/buffer_manager.nvim",
+
+    -- Completion
+    {
+        src = "https://github.com/saghen/blink.cmp",
+        version = vim.version.range("^1")
+    },
 
     -- Magit like git client
     "https://github.com/NeogitOrg/neogit",
@@ -37,19 +45,6 @@ vim.pack.add({
 --
 
 -- [Functions]
-load_last_session = function()
-    require("persistence").load({ last = true })
-end
-load_current_dir_session = function()
-    require("persistence").load()
-end
-select_session = function()
-    require("persistence").select()
-end
-stop_session = function()
-    require("persistence").stop()
-end
-
 open_config_in_oil = function()
     vim.cmd("Oil " .. vim.fn.stdpath("config"))
 end
@@ -59,6 +54,25 @@ end
 
 open_buffer_manager = function()
     require("buffer_manager.ui").toggle_quick_menu()
+end
+
+cmp_auto_show = function()
+    if vim.g.cmp_auto_show == nil then
+        vim.g.cmp_auto_show = false
+    end
+    return vim.g.cmp_auto_show
+end
+toggle_cmp_auto_show = function()
+    vim.g.cmp_auto_show = not vim.g.cmp_auto_show
+    print("vim.g.cmp_auto_show = ", cmp_auto_show())
+end
+toggle_line_number = function()
+    vim.opt.number = not vim.opt.number:get()
+    print("vim.opt.number = ", vim.opt.number:get())
+end
+toggle_relative_number = function()
+    vim.opt.relativenumber = not vim.opt.relativenumber:get()
+    print("vim.opt.relativenumber = ", vim.opt.relativenumber:get())
 end
 --
 
@@ -85,7 +99,7 @@ require("dashboard").setup({
             key = "2",
             key_hl = "Number",
             key_format = " %s",
-            action = load_last_session,
+            action = "AutoSession restore",
           },
           {
             icon = "󰱼 ",
@@ -95,7 +109,7 @@ require("dashboard").setup({
             key = "3",
             key_hl = "Number",
             key_format = " %s",
-            action = select_session,
+            action = "AutoSession search",
           },
           {
             icon = "󱁻 ",
@@ -120,8 +134,15 @@ require("dashboard").setup({
         },
     },
 })
-require("persistence").setup()
+
+vim.o.sessionoptions = "blank,buffers,curdir,folds,help,tabpages,winsize,winpos,terminal,localoptions"
+require("auto-session").setup({
+    auto_restore = false,
+    cwd_change_handling = true,
+})
+
 require("which-key").setup()
+
 require("oil").setup({
     buf_options = {
         buflisted = true,
@@ -143,10 +164,27 @@ require("oil").setup({
 
 local fzf_oil = require("fzf-oil").setup()
 
-require("fzf-lua").setup()
+require("fzf-lua").setup({
+    defaults = {
+        hidden = true,
+        no_ignore = true,
+    },
+})
 
 require("buffer_manager").setup({
     focus_alternate_buffer = true,
+})
+
+require('blink.cmp').setup({
+    completion = {
+        trigger = { show_in_snippet = false },
+        menu = { auto_show = cmp_auto_show },
+    },
+    keymap = { preset = "super-tab" },
+    cmdline = {
+        keymap = { preset = 'inherit' },
+        completion = { menu = { auto_show = true } },
+    },
 })
 
 vim.g.compile_mode = {
@@ -193,18 +231,31 @@ wk.add({
     {"<leader>bk", "<cmd>bd<cr>", desc = "Kill buffer", mode = "n"},
     {"<leader>bK", "<cmd>bd!<cr>", desc = "Kill buffer without saving", mode = "n"},
     {"<leader>bs", "<cmd>w<cr>", desc = "Save buffer", mode = "n"},
+    {"<leader>bS", "<cmd>wa<cr>", desc = "Save all buffers", mode = "n"},
+    {"<leader>b/", "<cmd>FzfLua blines<cr>", desc = "Search in current buffer", mode = "n"},
 
-    -- TODO(clovis): finish thi section
     -- Window
     {"<leader>w", group = "Window"},
     {"<leader>ws", "<cmd>sp<cr>", desc = "Horizontal window split", mode = "n"},
     {"<leader>wv", "<cmd>vs<cr>", desc = "Vercital window split", mode = "n"},
     {"<leader>wq", "<cmd>q<cr>", desc = "Close window", mode = "n"},
     {"<leader>wQ", "<cmd>q!<cr>", desc = "Close window without saving", mode = "n"},
+    {"<leader>wx", "<C-w>o", desc = "Close all other windows", mode = "n"},
+
     {"<leader>wj", "<C-w>j", desc = "Focus down window", mode = "n"},
+    {"<leader>w<Down>", "<C-w>j", desc = "Focus down window", mode = "n"},
     {"<leader>wk", "<C-w>k", desc = "Focus up window", mode = "n"},
+    {"<leader>w<Up>", "<C-w>k", desc = "Focus up window", mode = "n"},
     {"<leader>wh", "<C-w>h", desc = "Focus left window", mode = "n"},
+    {"<leader>w<Left>", "<C-w>h", desc = "Focus left window", mode = "n"},
     {"<leader>wl", "<C-w>l", desc = "Focus right window", mode = "n"},
+    {"<leader>w<Right>", "<C-w>l", desc = "Focus right window", mode = "n"},
+
+    {"<leader>w+", "<C-w>+", desc = "Increase height", mode = "n"},
+    {"<leader>w-", "<C-w>-", desc = "Decrease height", mode = "n"},
+    {"<leader>w>", "<C-w>>", desc = "Increase width", mode = "n"},
+    {"<leader>w<", "<C-w><", desc = "Decrease width", mode = "n"},
+    {"<leader>w=", "<C-w>=", desc = "Equally high and wide", mode = "n"},
 
     -- File/Find
     {"<leader>f", group = "File/Find"},
@@ -215,10 +266,11 @@ wk.add({
 
     -- Quit/Session
     {"<leader>q", group = "Quit/Session"},
-    {"<leader>qs", "<cmd>lua select_session()<cr>", desc = "Select session", mode = "n"},
-    {"<leader>qS", "<cmd>lua load_current_dir_session()<cr>", desc = "Load session for the current dir", mode = "n"},
-    {"<leader>ql", "<cmd>lua load_last_session()<cr>", desc = "Load last session", mode = "n"},
-    {"<leader>qd", "<cmd>lua stop_session()<cr>", desc = "Do not save current session", mode = "n"},
+    {"<leader>qs", "<cmd>AutoSession search<cr>", desc = "Select session", mode = "n"},
+    {"<leader>qa", "<cmd>AutoSession save<cr>", desc = "Save current session", mode = "n"},
+    {"<leader>qd", "<cmd>AutoSession delete<cr>", desc = "Delete current session", mode = "n"},
+    {"<leader>ql", "<cmd>AutoSession restore<cr>", desc = "Load last session", mode = "n"},
+    {"<leader>qt", "<cmd>AutoSession toggle<cr>", desc = "Toggle session autosave", mode = "n"},
     {"<leader>qq", "<cmd>qa<cr>", desc = "Quit nvim", mode = "n"},
     {"<leader>qQ", "<cmd>qa!<cr>", desc = "Quit nvim", mode = "n"},
     {"<leader>qr", "<cmd>restart<cr>", desc = "Restart nvim", mode = "n"},
@@ -228,6 +280,7 @@ wk.add({
     {"<leader>o-", "<cmd>Oil<cr>", desc = "Open current directory in Oil", mode = "n"},
     {"<leader>oc", open_config_file, desc = "Open nvim config file", mode = "n"},
     {"<leader>oC", open_config_in_oil, desc = "Open nvim config", mode = "n"},
+    {"<leader>of", "<cmd>FzfLua<cr>", desc = "Open FzfLua", mode = "n"},
 
     -- Git
     {"<leader>g", group = "Git"},
@@ -237,6 +290,12 @@ wk.add({
     {"<leader>c", group = "Code"},
     {"<leader>cc", "<cmd>below Compile<cr>", desc = "Compile Command", mode = "n"},
     {"<leader>cC", "<cmd>below Recompile<cr>", desc = "Recompile Command", mode = "n"},
+
+    -- Toggle
+    {"<leader>t", group = "Toggle"},
+    {"<leader>tc", toggle_cmp_auto_show, desc = "Toggle completion auto show", mode = "n"},
+    {"<leader>tn", toggle_line_number, desc = "Toggle line number", mode = "n"},
+    {"<leader>tr", toggle_relative_number, desc = "Toggle relative line number", mode = "n"},
 
     -- No Group
     {"<leader>/", "<cmd>FzfLua live_grep<cr>", desc = "Search project", mode = "n"},
