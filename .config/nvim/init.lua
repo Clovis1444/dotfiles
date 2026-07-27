@@ -1,5 +1,7 @@
 -- [Plugins]
 -- TODO(clovis): add LSP support
+-- TODO(clovis): add org mode support
+
 -- Dependency programs: fzf, fd, rg, bat, delta
 vim.pack.add({
     -- Dependency plugins
@@ -41,6 +43,9 @@ vim.pack.add({
     "https://github.com/nvim-lualine/lualine.nvim",
     -- Dashboard
     "https://github.com/nvimdev/dashboard-nvim",
+
+    -- Qol plugins
+    "https://github.com/folke/todo-comments.nvim",
 })
 --
 
@@ -197,6 +202,23 @@ lualine_cfg.sections.lualine_c = {
     { "filename", path = 1 }
 }
 require("lualine").setup(lualine_cfg)
+require("todo-comments").setup({
+    -- Custom keywords
+    keywords = {
+        IMPORTANT = { icon = " ", color = "hint" },
+    },
+    highlight = {
+        -- NOTE: vim regex
+        pattern = {
+            [[.*<(KEYWORDS)\s*:]], -- default
+            [[.*<(KEYWORDS)\s*\([^\)]*\)\s*:]], -- "KEYWORD(author): ..."
+        },
+    },
+    search = {
+        -- NOTE: ripgrep regex
+        pattern = [[\b(KEYWORDS)\s*(\([^)]*\))?\s*:]], -- default + "KEYWORD(author): ..."
+    },
+})
 --
 
 -- [Editor]
@@ -257,12 +279,17 @@ wk.add({
     {"<leader>w<", "<C-w><", desc = "Decrease width", mode = "n"},
     {"<leader>w=", "<C-w>=", desc = "Equally high and wide", mode = "n"},
 
+    -- TODO(clovis): add jumping groups "[" / "]"
+    -- TODO(clovis): add TODO jumps
+
     -- File/Find
     {"<leader>f", group = "File/Find"},
     {"<leader>ff", "<cmd>FzfLua files<cr>", desc = "Find file", mode = "n"},
     {"<leader>fd", fzf_oil.browse, desc = "Find directory", mode = "n"},
     {"<leader>fr", "<cmd>FzfLua oldfiles<cr>", desc = "Recent files", mode = "n"},
     {"<leader>fc", open_config_file, desc = "Open nvim config file", mode = "n"},
+    -- TODO(clovis): consider expanding this? Make it subgroup, add filters?
+    {"<leader>ft", "<cmd>TodoFzfLua<cr>", desc = "Find TODOs", mode = "n"},
 
     -- Quit/Session
     {"<leader>q", group = "Quit/Session"},
