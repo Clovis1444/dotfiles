@@ -1,6 +1,5 @@
 -- [Plugins]
 -- TODO(clovis): add LSP support
--- TODO(clovis): add org mode support
 
 -- Dependency programs: fzf, fd, rg, bat, delta
 vim.pack.add({
@@ -53,34 +52,49 @@ vim.pack.add({
 --
 
 -- [Functions]
-open_config_in_oil = function()
+function open_config_in_oil()
     vim.cmd("Oil " .. vim.fn.stdpath("config"))
 end
-open_config_file = function()
+function open_config_file()
     vim.cmd("edit " .. vim.fn.stdpath("config") .. "/init.lua")
 end
 
-open_buffer_manager = function()
+function open_buffer_manager()
     require("buffer_manager.ui").toggle_quick_menu()
 end
 
-cmp_auto_show = function()
+function cmp_auto_show()
     if vim.g.cmp_auto_show == nil then
         vim.g.cmp_auto_show = false
     end
     return vim.g.cmp_auto_show
 end
-toggle_cmp_auto_show = function()
+function toggle_cmp_auto_show()
     vim.g.cmp_auto_show = not vim.g.cmp_auto_show
     print("vim.g.cmp_auto_show = ", cmp_auto_show())
 end
-toggle_line_number = function()
+function toggle_line_number()
     vim.opt.number = not vim.opt.number:get()
     print("vim.opt.number = ", vim.opt.number:get())
 end
-toggle_relative_number = function()
+function toggle_relative_number()
     vim.opt.relativenumber = not vim.opt.relativenumber:get()
     print("vim.opt.relativenumber = ", vim.opt.relativenumber:get())
+end
+
+function jump_next_todo(keywords)
+    if keywords == nil then
+        require("todo-comments").jump_next()
+    else
+        require("todo-comments").jump_next({ keywords = keywords })
+    end
+end
+function jump_prev_todo(keywords)
+    if keywords == nil then
+        require("todo-comments").jump_prev()
+    else
+        require("todo-comments").jump_prev({ keywords = keywords })
+    end
 end
 --
 
@@ -286,8 +300,14 @@ wk.add({
     {"<leader>w<", "<C-w><", desc = "Decrease width", mode = "n"},
     {"<leader>w=", "<C-w>=", desc = "Equally high and wide", mode = "n"},
 
-    -- TODO(clovis): add jumping groups "[" / "]"
-    -- TODO(clovis): add TODO jumps
+    -- Next
+    {"<leader>]", group = "Next"},
+    {"<leader>]t", jump_next_todo, desc = "Next TODO", mode = "n"},
+    {"<leader>]T", function() jump_next_todo({"TODO"}) end, desc = "Next TODO(TODO only)", mode = "n"},
+    -- Prev
+    {"<leader>[", group = "Prev"},
+    {"<leader>[t", jump_prev_todo, desc = "Prev TODO", mode = "n"},
+    {"<leader>[T", function() jump_prev_todo({"TODO"}) end, desc = "Prev TODO(TODO only)", mode = "n"},
 
     -- File/Find
     {"<leader>f", group = "File/Find"},
@@ -295,7 +315,6 @@ wk.add({
     {"<leader>fd", fzf_oil.browse, desc = "Find directory", mode = "n"},
     {"<leader>fr", "<cmd>FzfLua oldfiles<cr>", desc = "Recent files", mode = "n"},
     {"<leader>fc", open_config_file, desc = "Open nvim config file", mode = "n"},
-    -- TODO(clovis): consider expanding this? Make it subgroup, add filters?
     {"<leader>ft", "<cmd>TodoFzfLua<cr>", desc = "Find TODOs", mode = "n"},
 
     -- Quit/Session
