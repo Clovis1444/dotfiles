@@ -1,6 +1,8 @@
 * Dependencies
   - [[https://github.com/alacritty/alacritty][Decent terminal emulator]]
   - [[https://www.nerdfonts.com][Nerd Font]]
+  - [[https://git-scm.com/][git]]
+  - [[https://github.com/curl/curl][curl]]
   - [[https://github.com/neovim/neovim][Neovim v0.12+]]
   - [[https://github.com/junegunn/fzf][fzf]]
   - [[https://github.com/sharkdp/fd][fd]]
