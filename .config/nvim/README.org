@@ -9,3 +9,6 @@
   - [[https://github.com/BurntSushi/ripgrep][ripgrep]]
   - [[https://github.com/sharkdp/bat][bat]]
   - [[https://github.com/dandavison/delta][delta]]
+  - [[https://www.gnu.org/software/tar/][tar]]
+  - [[https://github.com/tree-sitter/tree-sitter/blob/master/crates/cli/README.md][tree-sitter-cli]]
+  - [[https://docs.rs/cc/latest/cc/#compile-time-requirements][c compiler]]

@@ -78,7 +78,8 @@ packages=(
     imagemagick       # Dired deps
     tar               # Dired deps
     unzip             # Dired deps
-    fzf # nvim
+    fzf             # nvim
+    tree-sitter-cli # nvim
     # Dev packages
     uv # Python project manager
     meson # Project builder for cpp

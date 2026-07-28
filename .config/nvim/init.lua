@@ -38,6 +38,9 @@ vim.pack.add({
     -- Compile Mode for nvim
     "https://github.com/ej-shafran/compile-mode.nvim",
 
+    -- Syntax highlighting
+    "https://github.com/nvim-treesitter/nvim-treesitter",
+
     -- Status line
     "https://github.com/nvim-lualine/lualine.nvim",
     -- Dashboard
@@ -214,6 +217,30 @@ vim.g.compile_mode = {
     focus_compilation_buffer = true,
 }
 
+-- See :h nvim-treesitter-quickstart
+require('nvim-treesitter').setup({
+})
+-- IMPORTANT: add tree-sitter languages here
+-- See https://github.com/nvim-treesitter/nvim-treesitter/blob/main/SUPPORTED_LANGUAGES.md
+local ts_langs = {
+    "lua", "c", "cpp", "rust", "bash", "javascript",
+    "json", "toml", "kdl",
+}
+require('nvim-treesitter').install(ts_langs)
+-- Enable tree-sitter features
+vim.api.nvim_create_autocmd('FileType', {
+    pattern = ts_langs,
+    callback = function()
+        -- syntax highlighting, provided by Neovim
+        vim.treesitter.start()
+        -- folds, provided by Neovim
+        vim.wo.foldexpr = 'v:lua.vim.treesitter.foldexpr()'
+        vim.wo.foldmethod = 'expr'
+        -- indentation, provided by nvim-treesitter
+        vim.bo.indentexpr = "v:lua.require'nvim-treesitter'.indentexpr()"
+    end,
+})
+
 local lualine_cfg = require("lualine").get_config()
 lualine_cfg.sections.lualine_c = {
     { "filename", path = 1 }
@@ -242,7 +269,7 @@ require('orgmode').setup({
 })
 --
 
--- [Editor]
+-- [General]
 vim.cmd.colorscheme "catppuccin-nvim"
 
 vim.opt.number = true
