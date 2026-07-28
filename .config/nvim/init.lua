@@ -1,7 +1,5 @@
 -- [Plugins]
--- TODO(clovis): add LSP support
-
--- Dependency programs: fzf, fd, rg, bat, delta
+-- See ./README.org to see requirements
 vim.pack.add({
     -- Dependency plugins
     "https://github.com/nvim-lua/plenary.nvim",
@@ -34,12 +32,17 @@ vim.pack.add({
 
     -- Magit like git client
     "https://github.com/NeogitOrg/neogit",
+    "https://github.com/lewis6991/gitsigns.nvim",
 
     -- Compile Mode for nvim
     "https://github.com/ej-shafran/compile-mode.nvim",
 
     -- Syntax highlighting
     "https://github.com/nvim-treesitter/nvim-treesitter",
+
+    -- LSP
+    "https://github.com/folke/lazydev.nvim",
+    "https://github.com/neovim/nvim-lspconfig",
 
     -- Status line
     "https://github.com/nvim-lualine/lualine.nvim",
@@ -98,6 +101,14 @@ function jump_prev_todo(keywords)
     else
         require("todo-comments").jump_prev({ keywords = keywords })
     end
+end
+
+
+function jump_next_error()
+    vim.diagnostic.jump({ count = 1, float = true })
+end
+function jump_prev_error()
+    vim.diagnostic.jump({ count = -1, float = true })
 end
 --
 
@@ -202,15 +213,19 @@ require("buffer_manager").setup({
 
 require('blink.cmp').setup({
     completion = {
-        trigger = { show_in_snippet = false },
+        list = {
+            selection = { preselect = false }
+        },
         menu = { auto_show = cmp_auto_show },
     },
-    keymap = { preset = "super-tab" },
+    keymap = { preset = "enter" },
     cmdline = {
         keymap = { preset = 'inherit' },
         completion = { menu = { auto_show = true } },
     },
 })
+
+require('gitsigns').setup()
 
 vim.g.compile_mode = {
     default_command = "",
@@ -241,11 +256,24 @@ vim.api.nvim_create_autocmd('FileType', {
     end,
 })
 
-local lualine_cfg = require("lualine").get_config()
-lualine_cfg.sections.lualine_c = {
-    { "filename", path = 1 }
+require('lazydev').setup()
+-- IMPORTANT: add lsp servers here. You need to manually install servers on your machine
+local lsp_servers = {
+    "clangd", "lua_ls",
 }
-require("lualine").setup(lualine_cfg)
+-- Enable lsp servers
+-- See :h lspconfig-quickstart
+for _, lsp in pairs(lsp_servers) do
+    vim.lsp.enable(lsp)
+end
+
+
+require("lualine").setup({
+    sections = {
+        lualine_c = {{ "filename", path = 1 }},
+        lualine_x = {'lsp_status','encoding', 'fileformat', 'filetype'},
+    }
+})
 require("todo-comments").setup({
     -- Custom keywords
     keywords = {
@@ -284,8 +312,12 @@ vim.opt.wrap = true
 -- Use system clipboard
 vim.opt.clipboard = "unnamedplus"
 
--- Syntax highlighting
+-- Regex syntax highlighting
 vim.opt.syntax = "enable"
+
+-- Disable auto folding
+vim.opt.foldenable = false
+vim.opt.foldmethod = 'manual'
 --
 
 -- [Bindings]
@@ -331,10 +363,14 @@ wk.add({
     {"<leader>]", group = "Next"},
     {"<leader>]t", jump_next_todo, desc = "Next TODO", mode = "n"},
     {"<leader>]T", function() jump_next_todo({"TODO"}) end, desc = "Next TODO(TODO only)", mode = "n"},
+    {"<leader>]e", jump_next_error, desc = "Next error", mode = "n"},
+    {"<leader>]h", "<cmd>Gitsigns nav_hunk next<cr>", desc = "Next git hunk", mode = "n"},
     -- Prev
     {"<leader>[", group = "Prev"},
     {"<leader>[t", jump_prev_todo, desc = "Prev TODO", mode = "n"},
     {"<leader>[T", function() jump_prev_todo({"TODO"}) end, desc = "Prev TODO(TODO only)", mode = "n"},
+    {"<leader>[e", jump_prev_error, desc = "Prev error", mode = "n"},
+    {"<leader>[h", "<cmd>Gitsigns nav_hunk prev<cr>", desc = "Prev git hunk", mode = "n"},
 
     -- File/Find
     {"<leader>f", group = "File/Find"},
@@ -361,15 +397,33 @@ wk.add({
     {"<leader>oc", open_config_file, desc = "Open nvim config file", mode = "n"},
     {"<leader>oC", open_config_in_oil, desc = "Open nvim config", mode = "n"},
     {"<leader>of", "<cmd>FzfLua<cr>", desc = "Open FzfLua", mode = "n"},
+    {"<leader>ox", "gf", desc = "Open filepath under cursor", mode = "n"},
+    {"<leader>oX", ":normal gx<cr>", desc = "Open filepath or URI under cursor", mode = "n"},
 
     -- Git
     {"<leader>g", group = "Git"},
     {"<leader>gg", "<cmd>Neogit<cr>", desc = "Open Neogit", mode = "n"},
+    {"<leader>gh", "<cmd>Gitsigns preview_hunk<cr>", desc = "Preview hunk", mode = "n"},
+    {"<leader>g]", "<cmd>Gitsigns nav_hunk next<cr>", desc = "Next hunk", mode = "n"},
+    {"<leader>g[", "<cmd>Gitsigns nav_hunk prev<cr>", desc = "Prev hunk", mode = "n"},
+    {"<leader>gs", "<cmd>Gitsigns stage_hunk<cr>", desc = "Stage hunk", mode = "n"},
+    {"<leader>gR", "<cmd>Gitsigns reset_hunk<cr>", desc = "Reset hunk", mode = "n"},
 
     -- Code
     {"<leader>c", group = "Code"},
     {"<leader>cc", "<cmd>below Compile<cr>", desc = "Compile Command", mode = "n"},
     {"<leader>cC", "<cmd>below Recompile<cr>", desc = "Recompile Command", mode = "n"},
+    {"<leader>ca", "<cmd>FzfLua lsp_code_actions<cr>", desc = "LSP code action", mode = "n"},
+    {"<leader>ci", "<cmd>FzfLua lsp_implementations<cr>", desc = "LSP implementations", mode = "n"},
+    {"<leader>cr", vim.lsp.buf.rename, desc = "LSP rename", mode = "n"},
+    {"<leader>cD", "<cmd>FzfLua lsp_references<cr>", desc = "LSP references", mode = "n"},
+    {"<leader>cd", "<cmd>FzfLua lsp_definitions<cr>", desc = "LSP definitions", mode = "n"},
+    {"<leader>cx", "<cmd>FzfLua diagnostics_document<cr>", desc = "Show diagnostics", mode = "n"},
+    {"<leader>cX", "<cmd>FzfLua diagnostics_workspace<cr>", desc = "Show diagnostics workspace", mode = "n"},
+    {"<leader>cs", "<cmd>FzfLua lsp_document_symbols<cr>", desc = "LSP symbols", mode = "n"},
+    {"<leader>cS", "<cmd>FzfLua lsp_workspace_symbols<cr>", desc = "LSP symbols workspace", mode = "n"},
+    {"<leader>ck", vim.lsp.buf.hover, desc = "LSP hover", mode = "n"},
+    {"<leader>ce", vim.diagnostic.open_float, desc = "Open diagnostics float", mode = "n"},
 
     -- Toggle
     {"<leader>t", group = "Toggle"},
@@ -377,10 +431,22 @@ wk.add({
     {"<leader>tn", toggle_line_number, desc = "Toggle line number", mode = "n"},
     {"<leader>tr", toggle_relative_number, desc = "Toggle relative line number", mode = "n"},
 
+    -- Help
+    {"<leader>h", group = "Help"},
+    {"<leader>hk", "<cmd>FzfLua keymaps<cr>", desc = "Show keymaps", mode = "n"},
+    {"<leader>hm", "<cmd>FzfLua manpages<cr>", desc = "Show manpages", mode = "n"},
+    {"<leader>hc", "<cmd>FzfLua commands<cr>", desc = "Show commands", mode = "n"},
+    {"<leader>ho", "<cmd>FzfLua nvim_options<cr>", desc = "Show nvim options", mode = "n"},
+    {"<leader>hh", "<cmd>FzfLua<cr>", desc = "Open FzfLua", mode = "n"},
+
     -- No Group
     {"<leader>/", "<cmd>FzfLua live_grep<cr>", desc = "Search project", mode = "n"},
     {"<leader><leader>", "<cmd>FzfLua files<cr>", desc = "Find file", mode = "n"},
     {"<M-x>", "<cmd>FzfLua commands<cr>", desc = "Execute command", mode = "n"},
+    {"]e", jump_next_error, desc = "Next error", mode = "n"},
+    {"[e", jump_prev_error, desc = "Prev error", mode = "n"},
+    {"]h", "<cmd>Gitsigns nav_hunk next<cr>", desc = "Next git hunk", mode = "n"},
+    {"[h", "<cmd>Gitsigns nav_hunk prev<cr>", desc = "Prev git hunk", mode = "n"},
 })
 
 -- Move lines on Alt
