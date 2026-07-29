@@ -215,12 +215,12 @@ require("buffer_manager").setup({
 
 require('blink.cmp').setup({
     completion = {
-        list = {
-            selection = { preselect = false }
+        trigger = {
+            show_in_snippet = false
         },
         menu = { auto_show = cmp_auto_show },
     },
-    keymap = { preset = "enter" },
+    keymap = { preset = "super-tab" },
     cmdline = {
         keymap = { preset = 'inherit' },
         completion = { menu = { auto_show = true } },
