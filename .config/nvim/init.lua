@@ -51,6 +51,7 @@ vim.pack.add({
 
     -- Qol plugins
     "https://github.com/folke/todo-comments.nvim",
+    "https://github.com/nvim-mini/mini.align",
 
     -- Langs
     "https://github.com/nvim-orgmode/orgmode",
@@ -122,7 +123,7 @@ require("dashboard").setup({
             icon_hl = "Title",
             desc = "Recently opened files",
             desc_hl = "String",
-            key = "1",
+            key = "r",
             key_hl = "Number",
             key_format = " %s",
             action = "FzfLua oldfiles"
@@ -132,7 +133,7 @@ require("dashboard").setup({
             icon_hl = "Title",
             desc = "Reload last session",
             desc_hl = "String",
-            key = "2",
+            key = "l",
             key_hl = "Number",
             key_format = " %s",
             action = "AutoSession restore",
@@ -142,7 +143,7 @@ require("dashboard").setup({
             icon_hl = "Title",
             desc = "Select session",
             desc_hl = "String",
-            key = "3",
+            key = "s",
             key_hl = "Number",
             key_format = " %s",
             action = "AutoSession search",
@@ -152,7 +153,7 @@ require("dashboard").setup({
             icon_hl = "Title",
             desc = "Open nvim config file",
             desc_hl = "String",
-            key = "4",
+            key = "c",
             key_hl = "Number",
             key_format = " %s",
             action = open_config_file,
@@ -162,7 +163,7 @@ require("dashboard").setup({
             icon_hl = "Title",
             desc = "Open nvim config",
             desc_hl = "String",
-            key = "5",
+            key = "C",
             key_hl = "Number",
             key_format = " %s",
             action = open_config_in_oil,
@@ -201,6 +202,7 @@ require("oil").setup({
 local fzf_oil = require("fzf-oil").setup()
 
 require("fzf-lua").setup({
+    ui_select = {},
     defaults = {
         hidden = true,
         no_ignore = true,
@@ -274,6 +276,7 @@ require("lualine").setup({
         lualine_x = {'lsp_status','encoding', 'fileformat', 'filetype'},
     }
 })
+
 require("todo-comments").setup({
     -- Custom keywords
     keywords = {
@@ -289,6 +292,12 @@ require("todo-comments").setup({
     search = {
         -- NOTE: ripgrep regex
         pattern = [[\b(KEYWORDS)\s*(\([^)]*\))?\s*:]], -- default + "KEYWORD(author): ..."
+    },
+})
+require('mini.align').setup({
+    mappings = {
+        start = "ga",
+        start_with_preview = "gA",
     },
 })
 
@@ -364,13 +373,13 @@ wk.add({
     {"<leader>]t", jump_next_todo, desc = "Next TODO", mode = "n"},
     {"<leader>]T", function() jump_next_todo({"TODO"}) end, desc = "Next TODO(TODO only)", mode = "n"},
     {"<leader>]e", jump_next_error, desc = "Next error", mode = "n"},
-    {"<leader>]h", "<cmd>Gitsigns nav_hunk next<cr>", desc = "Next git hunk", mode = "n"},
+    {"<leader>]g", "<cmd>Gitsigns nav_hunk next<cr>", desc = "Next git hunk", mode = "n"},
     -- Prev
     {"<leader>[", group = "Prev"},
     {"<leader>[t", jump_prev_todo, desc = "Prev TODO", mode = "n"},
     {"<leader>[T", function() jump_prev_todo({"TODO"}) end, desc = "Prev TODO(TODO only)", mode = "n"},
     {"<leader>[e", jump_prev_error, desc = "Prev error", mode = "n"},
-    {"<leader>[h", "<cmd>Gitsigns nav_hunk prev<cr>", desc = "Prev git hunk", mode = "n"},
+    {"<leader>[g", "<cmd>Gitsigns nav_hunk prev<cr>", desc = "Prev git hunk", mode = "n"},
 
     -- File/Find
     {"<leader>f", group = "File/Find"},
@@ -399,6 +408,7 @@ wk.add({
     {"<leader>of", "<cmd>FzfLua<cr>", desc = "Open FzfLua", mode = "n"},
     {"<leader>ox", "gf", desc = "Open filepath under cursor", mode = "n"},
     {"<leader>oX", ":normal gx<cr>", desc = "Open filepath or URI under cursor", mode = "n"},
+    {"<leader>od", "<cmd>Dashboard<cr>", desc = "Open dashboard", mode = "n"},
 
     -- Git
     {"<leader>g", group = "Git"},
@@ -424,6 +434,7 @@ wk.add({
     {"<leader>cS", "<cmd>FzfLua lsp_workspace_symbols<cr>", desc = "LSP symbols workspace", mode = "n"},
     {"<leader>ck", vim.lsp.buf.hover, desc = "LSP hover", mode = "n"},
     {"<leader>ce", vim.diagnostic.open_float, desc = "Open diagnostics float", mode = "n"},
+    {"<leader>cf", vim.lsp.buf.format, desc = "Format buffer/region", mode = { "n", "v" }},
 
     -- Toggle
     {"<leader>t", group = "Toggle"},
@@ -445,8 +456,8 @@ wk.add({
     {"<M-x>", "<cmd>FzfLua commands<cr>", desc = "Execute command", mode = "n"},
     {"]e", jump_next_error, desc = "Next error", mode = "n"},
     {"[e", jump_prev_error, desc = "Prev error", mode = "n"},
-    {"]h", "<cmd>Gitsigns nav_hunk next<cr>", desc = "Next git hunk", mode = "n"},
-    {"[h", "<cmd>Gitsigns nav_hunk prev<cr>", desc = "Prev git hunk", mode = "n"},
+    {"]g", "<cmd>Gitsigns nav_hunk next<cr>", desc = "Next git hunk", mode = "n"},
+    {"[g", "<cmd>Gitsigns nav_hunk prev<cr>", desc = "Prev git hunk", mode = "n"},
 })
 
 -- Move lines on Alt
