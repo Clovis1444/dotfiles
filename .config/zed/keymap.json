@@ -128,13 +128,15 @@
     },
   },
   {
-    "context": "GitPanel",
+    "context": "GitPanel && ChangesList",
     "bindings": {
       "escape": "git_panel::Toggle",
       "s": "git::StageFile",
       "S": "git::StageAll",
       "u": "git::UnstageFile",
       "U": "git::UnstageAll",
+      "P": "git::Push",
+      "p": "git::Pull",
     },
   },
   {
