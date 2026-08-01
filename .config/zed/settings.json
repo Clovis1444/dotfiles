@@ -1,0 +1,126 @@
+// For information on how to configure Zed, see the Zed
+// documentation: https://zed.dev/docs/configuring-zed
+{
+  // [Extensions]
+  "auto_install_extensions": {
+    "catppuccin": true,
+    "catppuccin-icons": true,
+    "toml": true,
+    "org": true,
+  },
+  //
+
+  // [Appearence]
+  "theme": "Catppuccin Mocha",
+  "icon_theme": "Catppuccin Mocha",
+
+  "ui_font_family": "JetBrainsMono Nerd Font",
+  "buffer_font_family": "JetBrainsMono Nerd Font",
+  "buffer_font_features": {
+    "calt": false,
+  },
+  "buffer_font_size": 16,
+
+  "colorize_brackets": true,
+
+  "title_bar": {
+    "show_onboarding_banner": false,
+    "show_project_items": false,
+    "show_branch_name": false,
+    "show_sign_in": false,
+    "show_user_menu": false,
+  },
+  "tab_bar": {
+    "show": false,
+  },
+  "toolbar": {
+    "quick_actions": false,
+    "breadcrumbs": false,
+  },
+  "status_bar": {
+    "active_encoding_button": "enabled",
+    "show_active_file": true,
+  },
+  //
+
+  // [Popups/Docks/Panels]
+  "project_panel": {
+    "starts_open": false,
+    "dock": "left",
+    "button": false,
+  },
+  "git_panel": {
+    "starts_open": false,
+    "dock": "right",
+    "button": false,
+  },
+  "terminal": {
+    "blinking": "on",
+    "dock": "bottom",
+    "button": false,
+  },
+  "debugger": {
+    "button": false,
+  },
+  "file_finder": {
+    "include_ignored": "all",
+    "modal_max_width": "medium",
+  },
+  "outline_panel": {
+    "button": false,
+  },
+  "collaboration_panel": {
+    "button": false,
+  },
+  //
+
+  // [General]
+  "cli_default_open_behavior": "new_window",
+  "telemetry": {
+    "diagnostics": true,
+    "metrics": false,
+  },
+  "agent": {
+    "button": false,
+    "enabled": false,
+  },
+  "search": {
+    "button": false,
+  },
+  "diagnostics": {
+    "button": false,
+  },
+  "session": {
+    "trust_all_worktrees": true,
+  },
+  "edit_predictions": {
+    "provider": "none",
+  },
+  "show_edit_predictions": false,
+  "git": {
+    "inline_blame": {
+      "enabled": false,
+    },
+  },
+  "indent_guides": {
+    "enabled": true,
+    "coloring": "indent_aware",
+  },
+  "inlay_hints": {
+    "enabled": false,
+  },
+  "code_lens": "on",
+
+  "enable_language_server": true,
+
+  "base_keymap": "VSCode",
+  "vim_mode": true,
+
+  "which_key": {
+    "enabled": true,
+    "delay_ms": 300,
+  },
+
+  "relative_line_numbers": "enabled",
+  //
+}

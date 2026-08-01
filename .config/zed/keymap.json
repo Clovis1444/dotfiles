@@ -1,0 +1,161 @@
+// For information on binding keys, see the Zed
+// documentation: https://zed.dev/docs/key-bindings
+[
+  {
+    // SUPER CONTEXT
+    "context": "Workspace && !(Editor && vim_mode == insert)",
+    "bindings": {
+      "alt-x": "command_palette::Toggle",
+    },
+  },
+  {
+    // NORMAL VISUAL
+    "context": "Editor && (vim_mode == normal || vim_mode == visual) && !VimWaiting && !menu",
+    "bindings": {
+      // Leader key
+      "space": null,
+      // [No leader]
+      "space space": "file_finder::Toggle",
+      "space /": "text_finder::Toggle",
+      "space s": "project_symbols::Toggle",
+      // [Buffer]
+      "space b b": "tab_switcher::Toggle",
+      "space b p": "pane::ActivatePreviousItem",
+      "space b [": "pane::ActivatePreviousItem",
+      "space b n": "pane::ActivateNextItem",
+      "space b ]": "pane::ActivateNextItem",
+      "space b k": "pane::CloseActiveItem",
+      "space b K": "pane::CloseAllItems",
+      "space b s": "workspace::SaveWithoutFormat",
+      "space b S": "workspace::SaveAll",
+      "space b f": "editor::Format",
+      "space b /": "buffer_search::Deploy",
+      // [Windows navigation]
+      "space w h": "workspace::ActivatePaneLeft",
+      "space w left": "workspace::ActivatePaneLeft",
+      "space w l": "workspace::ActivatePaneRight",
+      "space w right": "workspace::ActivatePaneRight",
+      "space w k": "workspace::ActivatePaneUp",
+      "space w up": "workspace::ActivatePaneUp",
+      "space w j": "workspace::ActivatePaneDown",
+      "space w down": "workspace::ActivatePaneDown",
+      // [Windows manipulation]
+      "space w q": "pane::JoinAll",
+      "space w s": "pane::SplitRight",
+      "space w v": "pane::SplitDown",
+      "space w =": "workspace::ResetPaneSizes",
+      "space w H": "vim::ResizePaneLeft",
+      "space w L": "vim::ResizePaneRight",
+      "space w K": "vim::ResizePaneUp",
+      "space w J": "vim::ResizePaneDown",
+      // [Next]
+      "space ] e": "editor::GoToDiagnostic",
+      "] e": "editor::GoToDiagnostic",
+      "space ] g": "editor::GoToHunk",
+      "] g": "editor::GoToHunk",
+      // [Prev]
+      "space [ e": "editor::GoToPreviousDiagnostic",
+      "[ e": "editor::GoToPreviousDiagnostic",
+      "space [ g": "editor::GoToPreviousHunk",
+      "[ g": "editor::GoToPreviousHunk",
+      // [Find/File]
+      "space f f": "file_finder::Toggle",
+      "space f t": "text_finder::Toggle",
+      "space f p": "project_panel::Toggle",
+      "space f s": "zed::OpenSettingsFile",
+      "space f S": "zed::OpenDefaultSettings",
+      "space f K": "zed::OpenDefaultKeymap",
+      "space f y": "workspace::CopyPath",
+      // [Quit/Session]
+      "space q r": "projects::OpenRecent",
+      "space q q": "zed::Quit",
+      "space q s": "workspace::Open",
+      // [Open]
+      "space o e": "editor::ToggleFocus",
+      "space o p": "project_panel::Toggle",
+      "space o -": "project_panel::Toggle",
+      "space o g": "git_panel::Toggle",
+      "space o t": "terminal_panel::Toggle",
+      "space o q": "workspace::CloseAllDocks",
+      "space o o": "outline::Toggle",
+      "space o x": "zed::Extensions",
+      // [Git]
+      "space g g": "git_panel::Toggle",
+      "space g ]": "editor::GoToHunk",
+      "space g [": "editor::GoToPreviousHunk",
+      "space g h": "editor::ToggleSelectedDiffHunks",
+      "space g H": "editor::ToggleAllDiffHunks",
+      "space g s": "git::ToggleStaged",
+      "space g R": "git::Restore",
+      // [Code]
+      "space c c": "task::Spawn",
+      "space c C": "task::Rerun",
+      "space c a": "editor::ToggleCodeActions",
+      "space c i": "editor::GoToImplementation",
+      "space c r": "editor::Rename",
+      "space c d": "editor::GoToDefinition",
+      "space c D": "editor::FindAllReferences",
+      "space c s": "project_symbols::Toggle",
+      "space c X": "diagnostics::DeployCurrentFile",
+      "space c x": "diagnostics::Deploy",
+      "space c h": "editor::Hover",
+      "space c f": "editor::FormatSelections",
+      // [Toggle]
+      "space t b": "editor::ToggleGitBlameInline",
+      "space t r": "editor::ToggleRelativeLineNumbers",
+      "space t n": "editor::ToggleLineNumbers",
+      "space t d": "editor::ToggleInlineDiagnostics",
+      "space t D": "editor::ToggleDiagnostics",
+      "space t c": "editor::ToggleCodeLens",
+      "space t i": "editor::ToggleInlayHints",
+      // [Cursors]
+      "space z j": "editor::AddSelectionBelow",
+      "space z down": "editor::AddSelectionBelow",
+      "space z k": "editor::AddSelectionAbove",
+      "space z up": "editor::AddSelectionAbove",
+      "space z a": "editor::AlignSelections",
+    },
+  },
+  // PANELS CONTEXTS
+  {
+    "context": "ProjectPanel && !editing",
+    "bindings": {
+      "escape": "project_panel::Toggle",
+      "enter": [
+        "action::Sequence",
+        ["project_panel::OpenPermanent", "project_panel::Toggle"],
+      ],
+    },
+  },
+  {
+    "context": "GitPanel",
+    "bindings": {
+      "escape": "git_panel::Toggle",
+      "s": "git::StageFile",
+      "S": "git::StageAll",
+      "u": "git::UnstageFile",
+      "U": "git::UnstageAll",
+    },
+  },
+  {
+    "context": "Terminal",
+    "bindings": {
+      "ctrl-q": "pane::CloseActiveItem",
+    },
+  },
+  {
+    "context": "TabSwitcher",
+    "bindings": {
+      "k": "menu::SelectPrevious",
+      "j": "menu::SelectNext",
+      "q": "menu::Cancel",
+      "d": "tab_switcher::CloseSelectedItem",
+    },
+  },
+  {
+    "context": "Diagnostics",
+    "bindings": {
+      "escape": "pane::CloseActiveItem",
+    },
+  },
+]
