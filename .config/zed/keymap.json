@@ -63,6 +63,7 @@
       "space f t": "text_finder::Toggle",
       "space f p": "project_panel::Toggle",
       "space f s": "zed::OpenSettingsFile",
+      "space f k": "zed::OpenKeymapFile",
       "space f S": "zed::OpenDefaultSettings",
       "space f K": "zed::OpenDefaultKeymap",
       "space f y": "workspace::CopyPath",
