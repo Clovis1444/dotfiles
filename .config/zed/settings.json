@@ -112,6 +112,9 @@
   },
   "code_lens": "on",
 
+  "use_system_prompts": false,
+  "use_system_path_prompts": false,
+
   "enable_language_server": true,
 
   "base_keymap": "VSCode",
